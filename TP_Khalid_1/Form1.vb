@@ -6,13 +6,29 @@
         Dim grd As New MapWinGIS.Grid
         Dim img As New MapWinGIS.Image
 
+        ' Création d'une boite de dialogue qui permet d'ouvrir soit :
+        ' tout les fichier , image , shapefile , grid 
+        '  verifier si elle est  valider grace a un click sur OK
         Dim dlg As New OpenFileDialog
         dlg.Filter = "All Files (*.*)|*.*|" & sf.CdlgFilter & "|" & grd.CdlgFilter & " | " & img.CdlgFilter
+        If dlg.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            ' on affecter l'extention du fichier ouvrir en  miniscule et l'afficher
+            Dim extention As String
+            extention = IO.Path.GetExtension(dlg.FileName).ToLower()
+            If sf.CdlgFilter.ToLower().Contains(extention) Then
+                sf.Open(dlg.FileName)
+                carte.AddLayer(sf, True)
+
+
+
+            End If
 
 
 
 
-        dlg.ShowDialog()
+
+        End If
+
 
 
 
