@@ -26,9 +26,9 @@ Partial Class Form1
         Me.carte = New AxMapWinGIS.AxMap()
         Me.btn_add_data = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.rd_zoom_avant = New System.Windows.Forms.RadioButton()
-        Me.rd_zoom_arrier = New System.Windows.Forms.RadioButton()
         Me.rd_pan = New System.Windows.Forms.RadioButton()
+        Me.rd_zoom_arrier = New System.Windows.Forms.RadioButton()
+        Me.rd_zoom_avant = New System.Windows.Forms.RadioButton()
         CType(Me.carte, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -68,16 +68,15 @@ Partial Class Form1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Mode curseur de souris"
         '
-        'rd_zoom_avant
+        'rd_pan
         '
-        Me.rd_zoom_avant.AutoSize = True
-        Me.rd_zoom_avant.Location = New System.Drawing.Point(21, 22)
-        Me.rd_zoom_avant.Name = "rd_zoom_avant"
-        Me.rd_zoom_avant.Size = New System.Drawing.Size(82, 17)
-        Me.rd_zoom_avant.TabIndex = 0
-        Me.rd_zoom_avant.TabStop = True
-        Me.rd_zoom_avant.Text = "Zoom avant"
-        Me.rd_zoom_avant.UseVisualStyleBackColor = True
+        Me.rd_pan.AutoSize = True
+        Me.rd_pan.Location = New System.Drawing.Point(213, 22)
+        Me.rd_pan.Name = "rd_pan"
+        Me.rd_pan.Size = New System.Drawing.Size(82, 17)
+        Me.rd_pan.TabIndex = 0
+        Me.rd_pan.Text = "Se déplacer"
+        Me.rd_pan.UseVisualStyleBackColor = True
         '
         'rd_zoom_arrier
         '
@@ -86,20 +85,20 @@ Partial Class Form1
         Me.rd_zoom_arrier.Name = "rd_zoom_arrier"
         Me.rd_zoom_arrier.Size = New System.Drawing.Size(84, 17)
         Me.rd_zoom_arrier.TabIndex = 0
-        Me.rd_zoom_arrier.TabStop = True
         Me.rd_zoom_arrier.Text = "Zoom arriére"
         Me.rd_zoom_arrier.UseVisualStyleBackColor = True
         '
-        'rd_pan
+        'rd_zoom_avant
         '
-        Me.rd_pan.AutoSize = True
-        Me.rd_pan.Location = New System.Drawing.Point(213, 22)
-        Me.rd_pan.Name = "rd_pan"
-        Me.rd_pan.Size = New System.Drawing.Size(82, 17)
-        Me.rd_pan.TabIndex = 0
-        Me.rd_pan.TabStop = True
-        Me.rd_pan.Text = "Se déplacer"
-        Me.rd_pan.UseVisualStyleBackColor = True
+        Me.rd_zoom_avant.AutoSize = True
+        Me.rd_zoom_avant.Checked = True
+        Me.rd_zoom_avant.Location = New System.Drawing.Point(21, 22)
+        Me.rd_zoom_avant.Name = "rd_zoom_avant"
+        Me.rd_zoom_avant.Size = New System.Drawing.Size(82, 17)
+        Me.rd_zoom_avant.TabIndex = 0
+        Me.rd_zoom_avant.TabStop = True
+        Me.rd_zoom_avant.Text = "Zoom avant"
+        Me.rd_zoom_avant.UseVisualStyleBackColor = True
         '
         'Form1
         '
