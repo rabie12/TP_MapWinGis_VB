@@ -80,8 +80,12 @@
     End Sub
 
     Private Sub rd_zoom_avant_CheckedChanged(sender As Object, e As EventArgs) Handles rd_zoom_avant.CheckedChanged
+        Try
+            carte.CursorMode = MapWinGIS.tkCursorMode.cmZoomIn
+        Catch ex As Exception
 
-        ''carte.CursorMode = MapWinGIS.tkCursorMode.cmZoomIn
+        End Try
+
 
     End Sub
 
@@ -92,5 +96,12 @@
 
     Private Sub rd_pan_CheckedChanged(sender As Object, e As EventArgs) Handles rd_pan.CheckedChanged
         carte.CursorMode = MapWinGIS.tkCursorMode.cmPan
+    End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
+        Dim f As New Form2
+        f.Show()
+
+
     End Sub
 End Class
