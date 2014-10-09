@@ -12,3 +12,4 @@ C:\Users\Yasser\Documents\TP_MapWinGis\TP_Khalid_1\TP_Khalid_1\obj\Debug\TP_Khal
 C:\Users\Yasser\Documents\TP_MapWinGis\TP_Khalid_1\TP_Khalid_1\obj\Debug\TP_Khalid_1.exe
 C:\Users\Yasser\Documents\TP_MapWinGis\TP_Khalid_1\TP_Khalid_1\obj\Debug\TP_Khalid_1.xml
 C:\Users\Yasser\Documents\TP_MapWinGis\TP_Khalid_1\TP_Khalid_1\obj\Debug\TP_Khalid_1.pdb
+C:\Users\Yasser\Documents\TP_MapWinGis\TP_Khalid_1\TP_Khalid_1\obj\Debug\TP_Khalid_1.Form2.resources

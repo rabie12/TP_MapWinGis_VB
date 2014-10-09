@@ -12,7 +12,7 @@
         Dim dlg As New OpenFileDialog
         dlg.Filter = "All Files (*.*)|*.*|" & sf.CdlgFilter & "|" & grd.CdlgFilter & " | " & img.CdlgFilter
         If dlg.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            MessageBox.Show(Windows.Forms.DialogResult.OK)
+
 
             ' on affecter l'extention du fichier ouvrir en  miniscule
             Dim extention As String
@@ -77,5 +77,20 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
 
+    End Sub
+
+    Private Sub rd_zoom_avant_CheckedChanged(sender As Object, e As EventArgs) Handles rd_zoom_avant.CheckedChanged
+
+        ''carte.CursorMode = MapWinGIS.tkCursorMode.cmZoomIn
+
+    End Sub
+
+    Private Sub rd_zoom_arrier_CheckedChanged(sender As Object, e As EventArgs) Handles rd_zoom_arrier.CheckedChanged
+        carte.CursorMode = MapWinGIS.tkCursorMode.cmZoomOut
+
+    End Sub
+
+    Private Sub rd_pan_CheckedChanged(sender As Object, e As EventArgs) Handles rd_pan.CheckedChanged
+        carte.CursorMode = MapWinGIS.tkCursorMode.cmPan
     End Sub
 End Class
