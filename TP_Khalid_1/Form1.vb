@@ -12,6 +12,8 @@
         Dim dlg As New OpenFileDialog
         dlg.Filter = "All Files (*.*)|*.*|" & sf.CdlgFilter & "|" & grd.CdlgFilter & " | " & img.CdlgFilter
         If dlg.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            MessageBox.Show(Windows.Forms.DialogResult.OK)
+
             ' on affecter l'extention du fichier ouvrir en  miniscule
             Dim extention As String
             extention = IO.Path.GetExtension(dlg.FileName).ToLower()
@@ -27,7 +29,8 @@
                 ' traitement dune gride 
             ElseIf grd.CdlgFilter.ToLower().Contains(extention) Then
                 ' le .tiff est un geotiff donc on le traite comme tiff
-
+                '' on vérifier si le fichier ouvert fini par tiff 
+                '' si non on lajoute autant de img et on affiche dans la carte
                 If dlg.FileName.ToLower().EndsWith("tiff") Then
                     If Not carte.IsTIFFGrid(dlg.FileName) Then
                         img.Open(dlg.FileName)
@@ -36,8 +39,12 @@
                         Return
                     End If
                 End If
+                '' si ce n'est pas un shapefile ni une image
+                '' c'est une grid
                 grd.Open(dlg.FileName)
                 carte.AddLayer(grd, True)
+
+
 
 
 
@@ -59,6 +66,16 @@
 
 
 
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        
+
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class
