@@ -1,5 +1,5 @@
 ﻿Public Class Form1
-
+    Dim layer_handle As Integer
     Private Sub btn_add_data_Click(sender As Object, e As EventArgs) Handles btn_add_data.Click
         ' on  a déclarer 3 Objets : ShapeFile , Grid , Image 
         Dim sf As New MapWinGIS.Shapefile
@@ -22,7 +22,8 @@
                 'on ouvre le fichier
                 ' et on lajoute dans la carte 
                 sf.Open(dlg.FileName)
-                carte.AddLayer(sf, True)
+                layer_handle = carte.AddLayer(sf, True)
+
                 carte.ZoomToMaxExtents()
                 ' l objectif est eteind
                 Return
@@ -92,16 +93,34 @@
     Private Sub rd_zoom_arrier_CheckedChanged(sender As Object, e As EventArgs) Handles rd_zoom_arrier.CheckedChanged
         carte.CursorMode = MapWinGIS.tkCursorMode.cmZoomOut
 
+
+
+
     End Sub
 
     Private Sub rd_pan_CheckedChanged(sender As Object, e As EventArgs) Handles rd_pan.CheckedChanged
         carte.CursorMode = MapWinGIS.tkCursorMode.cmPan
+
     End Sub
 
     Private Sub Button1_Click_1(sender As Object, e As EventArgs)
         Dim f As New Form2
         f.Show()
 
+
+    End Sub
+
+    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs)
+
+
+    End Sub
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim R, G, B As Integer
+        R = TrackBar1.Value
+        G = TrackBar2.Value
+        B = TrackBar3.Value
+        carte.set_ShapeLayerFillColor(layer_handle, Convert.ToUInt32(RGB(R, G, B)))
 
     End Sub
 End Class
