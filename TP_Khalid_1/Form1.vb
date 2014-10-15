@@ -1,10 +1,11 @@
 ﻿Public Class Form1
     Dim layer_handle As Integer
+    Dim sf As New MapWinGIS.Shapefile
+    Dim grd As New MapWinGIS.Grid
+    Dim img As New MapWinGIS.Image
     Private Sub btn_add_data_Click(sender As Object, e As EventArgs) Handles btn_add_data.Click
         ' on  a déclarer 3 Objets : ShapeFile , Grid , Image 
-        Dim sf As New MapWinGIS.Shapefile
-        Dim grd As New MapWinGIS.Grid
-        Dim img As New MapWinGIS.Image
+      
 
         ' Création d'une boite de dialogue qui permet d'ouvrir soit :
         ' tout les fichier , image , shapefile , grid 
@@ -121,6 +122,20 @@
         G = TrackBar2.Value
         B = TrackBar3.Value
         carte.set_ShapeLayerFillColor(layer_handle, Convert.ToUInt32(RGB(R, G, B)))
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        '' la propriété  numShape Permet de récupérer le nombre de formes qu'on a 
+        Dim lenght As Integer = sf.NumShapes
+        Dim i As Integer
+        For i = 0 To lenght - 1
+            ListBox1.Items.Add(sf.CellValue(0, i))
+
+
+
+        Next
+
 
     End Sub
 End Class
