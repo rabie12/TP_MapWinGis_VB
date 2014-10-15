@@ -3,6 +3,19 @@
     Dim sf As New MapWinGIS.Shapefile
     Dim grd As New MapWinGIS.Grid
     Dim img As New MapWinGIS.Image
+
+   
+    Private Sub fill_listBox()
+        '' la propriété  numShape Permet de récupérer le nombre de formes qu'on a 
+        Dim lenght As Integer = sf.NumShapes
+        Dim i As Integer
+        For i = 0 To lenght - 1
+            ListBox1.Items.Add(sf.CellValue(0, i))
+
+
+
+        Next
+    End Sub
     Private Sub btn_add_data_Click(sender As Object, e As EventArgs) Handles btn_add_data.Click
         ' on  a déclarer 3 Objets : ShapeFile , Grid , Image 
       
@@ -18,17 +31,19 @@
             ' on affecter l'extention du fichier ouvrir en  miniscule
             Dim extention As String
             extention = IO.Path.GetExtension(dlg.FileName).ToLower()
+            ''--------------------- SHAPEFILE ---------------------
             ' si lextension du fichier ouvert est dans les extentions de shapefile 
             If sf.CdlgFilter.ToLower().Contains(extention) Then
                 'on ouvre le fichier
                 ' et on lajoute dans la carte 
                 sf.Open(dlg.FileName)
                 layer_handle = carte.AddLayer(sf, True)
-
+                fill_listBox()
                 carte.ZoomToMaxExtents()
                 ' l objectif est eteind
                 Return
-                ' traitement dune gride 
+                ''------------------- FIN SHAPEFILE
+                ' ---------------------- ---------------------------
             ElseIf grd.CdlgFilter.ToLower().Contains(extention) Then
                 ' le .tiff est un geotiff donc on le traite comme tiff
                 '' on vérifier si le fichier ouvert fini par tiff 
@@ -122,20 +137,28 @@
         G = TrackBar2.Value
         B = TrackBar3.Value
         carte.set_ShapeLayerFillColor(layer_handle, Convert.ToUInt32(RGB(R, G, B)))
+        carte.Refresh()
 
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        '' la propriété  numShape Permet de récupérer le nombre de formes qu'on a 
-        Dim lenght As Integer = sf.NumShapes
-        Dim i As Integer
-        For i = 0 To lenght - 1
-            ListBox1.Items.Add(sf.CellValue(0, i))
+
+
+        MessageBox.Show(sf.CellValue(0, ListBox1.SelectedIndex))
+        carte.set_ShapeFillColor(layer_handle, ListBox1.SelectedIndex, Convert.ToUInt32(RGB(255, 0, 0)))
 
 
 
-        Next
+
+
+
+
 
 
     End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        
+    End Sub
+   
 End Class
